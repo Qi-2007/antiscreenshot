@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (x64)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/test.exe",  // 确保程序路径正确
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",            // 使用 ${workspaceFolder} 避免硬编码路径
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "G:\\software\\mingw64\\bin\\gdb.exe",  // 确保路径存在
+            "setupCommands": [
+                {
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build_test_x64"  // 确保任务名称匹配 tasks.json
+        }
+    ]
+}

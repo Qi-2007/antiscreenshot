@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build_injector_gui_x64",
+            "type": "shell",
+            "command": "G:\\software\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-o",
+                "${workspaceFolder}\\injector_gui_x64.exe",
+                "${workspaceFolder}\\main.cpp",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-s",
+                "-luser32",
+                "-lkernel32",
+                "-ladvapi32",
+                "-lpsapi",
+                "-mwindows",
+                "-ldbghelp",
+                "-m64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "使用 64 位 g++ 编译 64 位 GUI 注入器"
+        },
+        {
+            "label": "build_injector_gui_x86",
+            "type": "shell",
+            "command": "G:\\software\\mingw32\\bin\\g++.exe",
+            "args": [
+                "-o",
+                "${workspaceFolder}\\injector_gui_x86.exe",
+                "${workspaceFolder}\\main.cpp",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-s",
+                "-luser32",
+                "-lkernel32",
+                "-ladvapi32",
+                "-lpsapi",
+                "-ldbghelp",
+                "-mwindows",
+                "-m32"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "使用 32 位 MSVCRT g++ 编译 32 位 GUI 注入器"
+        }
+    ]
+}

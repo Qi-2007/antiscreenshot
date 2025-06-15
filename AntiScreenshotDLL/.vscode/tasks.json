@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build_dll_x64",
+            "type": "shell",
+            // **** 修正: 指向 64 位 g++.exe 的完整路径 (保持不变) ****
+            "command": "G:\\software\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-shared",
+                "-o",
+                // **** 修正：DLL 输出文件名为英文，并使用相对路径，方便从运行目录加载 ****
+                "${workspaceFolder}\\anti_screenshot_64.dll", // 64位 DLL 输出文件名改为英文
+                "${workspaceFolder}\\dllmain.cpp",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-s",
+                "-luser32",
+                "-lkernel32",
+                "-m64" // 明确指定编译为64位
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "使用 64 位 g++ 编译 64 位 DLL"
+        },
+        {
+            "label": "build_dll_x86",
+            "type": "shell",
+            // **** 修正: 指向 32 位 g++.exe 的完整路径 (保持不变) ****
+            "command": "G:\\software\\mingw32\\bin\\g++.exe",
+            "args": [
+                "-shared",
+                "-o",
+                // **** 修正：DLL 输出文件名为英文，并使用相对路径，方便从运行目录加载 ****
+                "${workspaceFolder}\\anti_screenshot_32.dll", // 32位 DLL 输出文件名改为英文
+                "${workspaceFolder}\\dllmain.cpp",
+                "-static-libgcc",
+                "-static-libstdc++",
+                "-s",
+                "-luser32",
+                "-lkernel32",
+                "-m32" // 明确指定编译为32位
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "detail": "使用 32 位 g++ 编译 32 位 DLL"
+        }
+    ]
+}
